@@ -4,14 +4,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
-const char *message = "HTTP/1.1 200 OK\r\n\
-X-Powered-By: Express\r\n\
-Content-Type: application/json; charset=utf-8\r\n\
-Content-Length: 17\r\n\
-Date: Fri, 15 Oct 2021 23:42:36 GMT\r\n\
-Connection: closed\r\n\
-\r\n\
-{\"status\":\"live\"}";
+#include "lib/message.h"
 
 int main(int argc, char *argv[])
 {
@@ -69,7 +62,7 @@ int main(int argc, char *argv[])
 			{
 				// Send the message back to client
 				puts(client_message);
-				write(client_sock, message, strlen(message));
+				write(client_sock, getmessage(), strlen(getmessage()));
 			}
 
 			if (read_size == -1)
