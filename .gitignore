@@ -1,0 +1,12 @@
+# folders
+/bin
+/.vscode
+/include
+
+# binaries
+client
+main
+server
+
+# trash and other objects
+*.o
