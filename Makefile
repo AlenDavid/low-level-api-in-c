@@ -10,11 +10,12 @@ LIBS=$(wildcard $(LDIR)/*.c)
 _OBJ = $(patsubst %.c, %.o, $(LIBS))
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-build: $(OBJ)
+build: $(OBJ) $(ODIR)/$(ENTRYPOINT).o
 	@mkdir -p $(BINDIR)
 	@$(CC) -o $(BINDIR)/$(ENTRYPOINT) $(OBJ) $(ODIR)/$(ENTRYPOINT).o
 
 $(ODIR)/$(ENTRYPOINT).o:
+	@mkdir -p $(ODIR)
 	@$(CC) -c -o $@ $(ENTRYPOINT).c
 
 $(OBJ): $(LIBS)
